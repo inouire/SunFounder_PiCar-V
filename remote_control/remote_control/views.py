@@ -24,7 +24,7 @@ cam = camera.Camera(debug=False, db=db_file)
 cam.ready()
 bw.ready()
 fw.ready()
- 
+
 SPEED = 60
 bw_status = 0
 
@@ -67,7 +67,7 @@ def run(request):
 		elif 'fwturn' in action:
 			print("turn %s" % action)
 			fw.turn(int(action.split(':')[1]))
-		
+
 		# ================ Camera =================
 		elif action == 'camready':
 			cam.ready()
@@ -78,7 +78,16 @@ def run(request):
 		elif action == 'camup':
 			cam.turn_up(20)
 		elif action == 'camdown':
-			cam.turn_down(20)	
+			cam.turn_down(20)
+		elif action == 'nodyes':
+			amplitude =  10
+			cam.turn_up(amplitude)
+			time.sleep(0.1)
+			cam.turn_down(2 * amplitude)
+			time.sleep(0.1)
+			cam.turn_up(2* amplitude)
+			time.sleep(0.1)
+			cam.turn_down(amplitude)
 	if 'speed' in request.GET:
 		speed = int(request.GET['speed'])
 		if speed < 0:
