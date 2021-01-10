@@ -15,6 +15,7 @@ from .driver import camera, stream
 from picar import back_wheels, front_wheels
 from django.http import HttpResponse
 import picar
+import time
 
 picar.setup()
 db_file = "/home/pi/SunFounder_PiCar-V/remote_control/remote_control/driver/config"
